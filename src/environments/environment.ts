@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  weather_api_key: "615fb1c3bc250ea1d0a78a3e2b9f73f8",
+  city_weather_name: "Zapala,ar"
 };
 
 /*

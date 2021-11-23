@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <i class="material-icons espaciado-iconos">note_alt</i>
+  <span>{{ titulo }}</span>
+  <span class="example-spacer"></span>
+  <i class="material-icons espaciado-iconos">access_time_filled</i>
+  <h1>{{fechaYHora}}</h1>
+  <h1 class="espaciado-iconos">|</h1>
+  <h1>{{this.clima.nombre}}</h1>
+  <i class="material-icons espaciado-iconos">{{this.clima.icono}}</i>
+  <h1>{{this.clima.temp}}</h1>
+</mat-toolbar>

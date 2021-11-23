@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div
+          class="d-flex justify-content-center"
+          style="margin-top: calc(100vh / 3);"
+        >
+          <h1>{{ labels.buscar_paciente }}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center">
+          <form action="">
+            <mat-form-field appearance="fill" style="width: 40vw;">
+              <mat-label>Nombre</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Nombre del paciente"
+                [matAutocomplete]="auto"
+                [formControl]="formSearcher"
+              />
+              <mat-icon matSuffix>search  </mat-icon>
+              <mat-autocomplete #auto="matAutocomplete"></mat-autocomplete>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
