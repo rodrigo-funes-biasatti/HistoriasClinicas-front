@@ -1,0 +1,36 @@
+<div *ngIf="this.pacienteSeleccionado; else noPacienteSeleccionado">
+  <div class="fondo-oscuro d-flex justify-content-center align-items-center">
+    <div class="d-flex flex-row pt-2 margen-costados">
+      <span class="material-icons">account_circle</span>
+      <p>{{this.pacienteSeleccionado.nombre + " " + this.pacienteSeleccionado.apellido}}</p>
+    </div>
+    <div class="d-flex flex-row pt-2 margen-costados">
+      <span class="material-icons">
+        badge
+      </span>
+      <p class="info-paciente">{{this.pacienteSeleccionado.dni}}</p>
+    </div>
+    <div class="d-flex flex-row pt-2 margen-costados">
+      <span class="material-icons">
+        whatsapp
+      </span>
+      <p class="info-paciente">{{this.pacienteSeleccionado.telefono}}</p>
+    </div>
+    <div class="d-flex flex-row pt-2 margen-costados">
+      <span class="material-icons">
+        health_and_safety
+      </span>
+      <p class="info-paciente">{{ this.pacienteSeleccionado.obra_social}}</p>
+    </div>
+  </div>
+</div>
+<ng-template #noPacienteSeleccionado>
+  <div class="fondo-oscuro d-flex justify-content-center align-items-center no-paciente-selec">
+    <div class="d-flex flex-row pt-2 margen-costados">
+      <span class="material-icons">
+        person_off
+      </span>
+      <p>{{labels.no_paciente_selec}}</p>
+    </div>
+  </div>
+</ng-template>

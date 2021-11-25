@@ -1,0 +1,23 @@
+<div class="fab-container">
+  <button
+    mat-fab
+    color="primary"
+    class="flotante-derecha-abajo"
+    aria-label="Example icon button with a home icon"
+    (click)="onToggleFab()"
+  >
+    <mat-icon [@fabToggler]="{value: fabTogglerState}">add</mat-icon>
+  </button>
+  <div [@speedDialStagger]="buttons.length">
+    <button
+      *ngFor="let btn of buttons"
+      class="fab-seccundary"
+      mat-mini-fab
+      color="{{btn.color}}"
+      matTooltip="{{btn.tooltip}}"
+      routerLink="{{btn.redirectTo}}"
+    >
+      <mat-icon>{{btn.icon}}</mat-icon>
+    </button>
+  </div>
+</div>

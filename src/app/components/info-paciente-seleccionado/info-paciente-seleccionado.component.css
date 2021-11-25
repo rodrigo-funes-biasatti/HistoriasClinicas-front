@@ -1,0 +1,20 @@
+.margen-arriba{
+    padding: 10px 0;
+}
+
+.margen-costados{
+    margin: 0px 30px;
+}
+
+.fondo-oscuro{
+    background-color: grey;
+    color: white;
+}
+
+.info-paciente{
+    margin-left: 5px;
+}
+
+.no-paciente-selec {
+    background-color: #ff7373;
+}

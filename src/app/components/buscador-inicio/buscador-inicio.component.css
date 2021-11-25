@@ -1,0 +1,7 @@
+.centrado-vertical {
+    margin-top: calc(100vh / 4);
+}
+
+.ancho-input-buscar{
+    width: 40vw;
+}

@@ -1,0 +1,42 @@
+<div class="container-fluid mt-5">
+  <div class="d-flex justify-content-center">
+    <h1>Pacientes Encontrados</h1>
+  </div>
+  <div
+    *ngIf="pacientes.length; else sinResultados"
+    class="row d-flex justify-content-center mt-2"
+  >
+    <div *ngFor="let paciente of pacientes" class="col-md-3" style="margin: 10px;">
+      <mat-card class="example-card">
+        <mat-card-subtitle>
+          DNI:
+          <strong>{{ paciente.dni }}</strong>
+        </mat-card-subtitle>
+        <mat-card-title>
+          {{ paciente.nombre + ' ' + paciente.apellido }}
+        </mat-card-title>
+        <mat-card-content>
+          <p>
+            Obra Social:
+            <strong>{{ paciente.obra_social }}</strong>
+          </p>
+          <p>
+            Teléfono:
+            <strong>{{ paciente.telefono }}</strong>
+          </p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+          <button mat-button>SELECCIONAR</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <ng-template #sinResultados>
+    <div class="d-flex justify-content-center">
+      <h1>
+        <strong>No hay resultados, por favor realice una búsqueda.</strong>
+      </h1>
+    </div>
+  </ng-template>
+</div>
