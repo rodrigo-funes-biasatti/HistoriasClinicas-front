@@ -10,21 +10,29 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { CustomInterceptor } from './interceptors/custom.interceptor';
-import { BuscadorPacientesComponent } from './buscador-pacientes/buscador-pacientes.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BuscadorInicioComponent } from './components/buscador-inicio/buscador-inicio.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BotonFlotanteComponent } from './components/boton-flotante/boton-flotante.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { InfoPacienteSeleccionadoComponent } from './components/info-paciente-seleccionado/info-paciente-seleccionado.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ListadoPacientesComponent } from './components/listado-pacientes/listado-pacientes.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
-    BuscadorPacientesComponent,
     BuscadorInicioComponent,
+    BotonFlotanteComponent,
+    InfoPacienteSeleccionadoComponent,
+    ListadoPacientesComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +47,11 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTooltipModule,
+    MatDividerModule,
+    MatSnackBarModule,
+    MatCardModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -1,5 +1,9 @@
 <app-inicio></app-inicio>
 
+<app-info-paciente-seleccionado [pacienteSeleccionado]="this.paciente"></app-info-paciente-seleccionado>
+
+<mat-divider></mat-divider>
+
 <div [ngClass]="this.spinnerService.visibility ? 'loading-indicator' : ''">
   <mat-spinner
     [mode]="mode"
@@ -8,4 +12,7 @@
   ></mat-spinner>
 </div>
 
-<app-buscador-inicio></app-buscador-inicio>
+<router-outlet></router-outlet>
+
+<app-boton-flotante></app-boton-flotante>
+

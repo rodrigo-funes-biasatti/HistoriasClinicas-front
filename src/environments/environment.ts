@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   weather_api_key: "615fb1c3bc250ea1d0a78a3e2b9f73f8",
-  city_weather_name: "Zapala,ar"
+  city_weather_name: "Zapala,ar",
+  endpoint: "http://localhost:8080/api/",
 };
 
 /*
