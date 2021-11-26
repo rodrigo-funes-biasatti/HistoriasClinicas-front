@@ -45,4 +45,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 
 .error-snackbar{
   background: #fc6363;
+  color: white;
+}
+
+.error-snackbar button{
+ color: white;
 }

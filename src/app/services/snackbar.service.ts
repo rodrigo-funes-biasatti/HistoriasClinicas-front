@@ -10,14 +10,14 @@ export class SnackbarService {
 
   openSnackBarSuccess(mensaje: string, action: string){
     this.snackBar.open(mensaje, action, {
-      duration: 2000,
+      duration: 4000,
       panelClass: ['blue-snackbar']
     });
   }
 
   openSnackBarError(mensaje: string, action: string){
     this.snackBar.open(mensaje, action, {
-      duration: 2000,
+      duration: 4000,
       panelClass: ['error-snackbar']
     });
   }

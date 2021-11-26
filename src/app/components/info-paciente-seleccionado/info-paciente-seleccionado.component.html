@@ -1,4 +1,4 @@
-<div *ngIf="this.pacienteSeleccionado; else noPacienteSeleccionado">
+<div *ngIf="!objetoVacio(this.pacienteSeleccionado); else noPacienteSeleccionado">
   <div class="fondo-oscuro d-flex justify-content-center align-items-center">
     <div class="d-flex flex-row pt-2 margen-costados">
       <span class="material-icons">account_circle</span>
