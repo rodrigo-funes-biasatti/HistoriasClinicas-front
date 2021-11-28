@@ -13,11 +13,11 @@
         <div class="d-flex justify-content-center">
           <form action="">
             <mat-form-field appearance="fill" class="ancho-input-buscar">
-              <mat-label>Nombre</mat-label>
+              <mat-label>DNI o Nombre</mat-label>
               <input
                 type="text"
                 matInput
-                placeholder="Nombre del paciente"
+                placeholder="DNI o nombre del Paciente"
                 [formControl]="formSearcher"
                 (keydown.enter)="buscarPaciente()"
               />

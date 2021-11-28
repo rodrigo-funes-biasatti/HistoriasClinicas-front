@@ -1,0 +1,158 @@
+<div class="container d-flex-justify-content-center mt-5">
+  <mat-grid-list cols="3" rowHeight="12:1">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+      <h1>Paciente</h1>
+    </mat-grid-tile>
+    <div [formGroup]="formPaciente">
+      <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-form-field class="ancho-inputs" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input
+            class="ancho-inputs"
+            matInput
+            placeholder="Nombre"
+            required
+            formControlName="nombre"
+          />
+          <mat-error
+            *ngIf="formPaciente.controls['nombre'].errors?.['required']"
+          >
+            El Nombre es
+            <strong>requerido</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="formPaciente.controls['nombre'].errors?.['maxLength']"
+          >
+            Máximo
+            <strong>50 caracteres.</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-form-field class="ancho-inputs" appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input
+            class="ancho-inputs"
+            matInput
+            placeholder="Apellido"
+            required
+            formControlName="apellido"
+          />
+          <mat-error
+            *ngIf="formPaciente.controls['apellido'].errors?.['required']"
+          >
+            El Apellido es
+            <strong>requerido</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="formPaciente.controls['apellido'].errors?.['maxLength']"
+          >
+            Máximo
+            <strong>50 caracteres.</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-form-field class="ancho-inputs" appearance="fill">
+          <mat-label>DNI</mat-label>
+          <input matInput placeholder="DNI" required formControlName="dni" />
+          <mat-error
+            *ngIf="formPaciente.controls['dni'].errors?.['required']"
+          >
+            El DNI es
+            <strong>requerido</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="formPaciente.controls['dni'].errors?.['pattern']"
+          >
+            Sólo
+            <strong>números</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="formPaciente.controls['dni'].errors?.['minLength']"
+          >
+            Más de 
+            <strong>7 caracteres</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="formPaciente.controls['dni'].errors?.['maxLength']"
+          >
+            Menos de 
+            <strong>8 caracteres</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="3">
+        <mat-form-field
+          appearance="fill"
+          style="width: 90vw; padding-left: 10px;"
+        >
+          <mat-label>Dirección</mat-label>
+          <input
+            matInput
+            placeholder="Dirección"
+            required
+            formControlName="direccion"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
+        <mat-form-field appearance="fill" class="ancho-inputs">
+          <mat-label>Teléfono</mat-label>
+          <input
+            matInput
+            placeholder="Teléfono"
+            required
+            formControlName="telefono"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-form-field appearance="fill" class="ancho-inputs">
+          <mat-label>Obra Social</mat-label>
+          <input
+            matInput
+            placeholder="Obra Social"
+            required
+            formControlName="obra_social"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-form-field appearance="fill" class="ancho-inputs">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento"   />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #picker
+          ></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-form-field appearance="fill" class="ancho-inputs">
+          <mat-label>Sexo</mat-label>
+          <mat-select required formControlName="sexo">
+            <mat-option value="0">Masculino</mat-option>
+            <mat-option value="1">Femenino</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </div>
+    <mat-grid-tile [colspan]="3" [rowspan]="2">
+      <button mat-flat-button color="primary" class="espaciado-botones">
+        Guardar
+      </button>
+      <button
+        mat-stroked-button
+        color="warn"
+        class="espaciado-botones"
+        (click)="limpiar_campos()"
+      >
+        Limpiar
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

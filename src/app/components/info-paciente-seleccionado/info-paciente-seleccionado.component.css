@@ -18,3 +18,11 @@
 .no-paciente-selec {
     background-color: #ff7373;
 }
+
+.letras-blancas {
+    color: white;
+}
+
+.margen-costado-reducido{
+    margin: 0px 5px;
+}

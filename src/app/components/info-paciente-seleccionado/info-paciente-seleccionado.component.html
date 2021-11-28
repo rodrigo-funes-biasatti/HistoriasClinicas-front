@@ -1,36 +1,80 @@
-<div *ngIf="!objetoVacio(this.pacienteSeleccionado); else noPacienteSeleccionado">
-  <div class="fondo-oscuro d-flex justify-content-center align-items-center">
-    <div class="d-flex flex-row pt-2 margen-costados">
-      <span class="material-icons">account_circle</span>
-      <p>{{this.pacienteSeleccionado.nombre + " " + this.pacienteSeleccionado.apellido}}</p>
-    </div>
-    <div class="d-flex flex-row pt-2 margen-costados">
-      <span class="material-icons">
-        badge
-      </span>
-      <p class="info-paciente">{{this.pacienteSeleccionado.dni}}</p>
-    </div>
-    <div class="d-flex flex-row pt-2 margen-costados">
-      <span class="material-icons">
-        whatsapp
-      </span>
-      <p class="info-paciente">{{this.pacienteSeleccionado.telefono}}</p>
-    </div>
-    <div class="d-flex flex-row pt-2 margen-costados">
-      <span class="material-icons">
-        health_and_safety
-      </span>
-      <p class="info-paciente">{{ this.pacienteSeleccionado.obra_social}}</p>
-    </div>
-  </div>
+<div
+  *ngIf="!objetoVacio(this.pacienteSeleccionado); else noPacienteSeleccionado"
+>
+  <mat-accordion>
+    <mat-expansion-panel class="fondo-oscuro">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="letras-blancas">
+          <div class="d-flex flex-row margen-costados">
+            <span class="material-icons margen-costado-reducido">
+              account_circle
+            </span>
+            <mat-label>
+              Paciente:
+              <strong>
+                {{
+                  this.pacienteSeleccionado.nombre +
+                    ' ' +
+                    this.pacienteSeleccionado.apellido
+                }}
+              </strong>
+            </mat-label>
+          </div>
+          <div class="d-flex flex-row margen-costados">
+            <span class="material-icons">
+              badge
+            </span>
+            <mat-label class="margen-costado-reducido">
+              DNI:
+              <strong>{{ this.pacienteSeleccionado.dni }}</strong>
+            </mat-label>
+          </div>
+          <div class="d-flex flex-row margen-costados">
+            <span class="material-icons">
+              whatsapp
+            </span>
+            <mat-label class="margen-costado-reducido">
+              Teléfono:
+              <strong>{{ this.pacienteSeleccionado.telefono }}</strong>
+            </mat-label>
+          </div>
+          <div class="d-flex flex-row margen-costados">
+            <span class="material-icons">
+              health_and_safety
+            </span>
+            <mat-label class="margen-costado-reducido">
+              Obra Social:
+              <strong>
+                {{ this.pacienteSeleccionado.obra_social.toUpperCase() }}
+              </strong>
+            </mat-label>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-action-row>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="redirectToFormularioPaciente()"
+        >
+          Editar Paciente
+        </button>
+        <button mat-raised-button color="primary">
+          Ver Historiales Clinicos
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
 <ng-template #noPacienteSeleccionado>
-  <div class="fondo-oscuro d-flex justify-content-center align-items-center no-paciente-selec">
+  <div
+    class="fondo-oscuro d-flex justify-content-center align-items-center no-paciente-selec"
+  >
     <div class="d-flex flex-row pt-2 margen-costados">
       <span class="material-icons">
         person_off
       </span>
-      <p>{{labels.no_paciente_selec}}</p>
+      <p>{{ labels.no_paciente_selec }}</p>
     </div>
   </div>
 </ng-template>

@@ -12,7 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { CustomInterceptor } from './interceptors/custom.interceptor';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BuscadorInicioComponent } from './components/buscador-inicio/buscador-inicio.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +23,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ListadoPacientesComponent } from './components/listado-pacientes/listado-pacientes.component';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FormularioPacienteComponent } from './components/formulario-paciente/formulario-paciente.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,6 +39,7 @@ import { MatCardModule } from '@angular/material/card';
     BotonFlotanteComponent,
     InfoPacienteSeleccionadoComponent,
     ListadoPacientesComponent,
+    FormularioPacienteComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,13 @@ import { MatCardModule } from '@angular/material/card';
     MatTooltipModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatSelectModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

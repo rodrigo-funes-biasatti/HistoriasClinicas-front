@@ -25,8 +25,12 @@ export class PacientesService {
               private localStorageService: LocalStorageService) { }
 
   findByNamePatient(nombre: string): Observable<Paciente[]>{
-    return this.httpClient.get<Paciente[]>(`${environment.endpoint}${this.url}${nombre}`);
+    return this.httpClient.get<Paciente[]>(`${environment.endpoint}${this.url}nombre/${nombre}`);
   };
+
+  findByDniPatient(dni: string): Observable<Paciente[]>{
+    return this.httpClient.get<Paciente[]>(`${environment.endpoint}${this.url}dni/${dni}`);
+  }
 
   dispararEventoPacientesEncontrados(pacientes: Paciente[]){
     this.pacientesEncontrados$.next(pacientes);

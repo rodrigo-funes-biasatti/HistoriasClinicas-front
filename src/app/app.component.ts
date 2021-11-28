@@ -30,15 +30,6 @@ export class AppComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.pacientesService.pacientesEncontrados.subscribe(res => {
-      if (res.length <= 0) {
-        return;
-      }
-      this.pacientes = res;
-      this.router.navigate(['/pacientes']);
-    },
-      err => {
-        this.snackBarService.openSnackBarError("No se han encotrado resultados", "Cerrar");
-      })
   }
+  
 }

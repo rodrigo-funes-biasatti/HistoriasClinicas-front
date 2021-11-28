@@ -5,5 +5,7 @@ export interface Paciente {
     dni: string,
     direccion: string,
     telefono: string,
-    obra_social: string
+    obra_social: string,
+    fecha_nacimiento: string,
+    sexo: number
 }

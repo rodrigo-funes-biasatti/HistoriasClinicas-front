@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { BuscadorInicioComponent } from './components/buscador-inicio/buscador-inicio.component';
 import { ListadoPacientesComponent } from './components/listado-pacientes/listado-pacientes.component';
+import { FormularioPacienteComponent } from './components/formulario-paciente/formulario-paciente.component';
 
 const routes: Routes = [
   { path: 'buscar', component: BuscadorInicioComponent },
-  { path: 'pacientes', component: ListadoPacientesComponent},
-  { path: '', redirectTo: 'buscar', pathMatch: 'full'},
+  { path: 'pacientes', component: ListadoPacientesComponent },
+  { path: 'formulario-paciente', component: FormularioPacienteComponent },
+  { path: '', redirectTo: 'buscar', pathMatch: 'full' },
+  { path: '**', redirectTo: 'buscar' }
 ]
 
 @NgModule({

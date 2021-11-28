@@ -8,6 +8,8 @@ import { PacientesService } from 'src/app/services/pacientes.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { criterios_busqueda } from 'src/app/constants/criterios-busqueda';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscador-inicio',
@@ -28,13 +30,16 @@ export class BuscadorInicioComponent implements OnInit {
 
   formSearcher = new FormControl();
 
-  showSpinner: boolean = false; 
+  showSpinner: boolean = false;
+
+  criterio_busqueda_seleccionado: criterios_busqueda = criterios_busqueda.dni;
 
   constructor(
     public spinnerService: SpinnerService,
     private pacienteService: PacientesService,
     private localStorageService: LocalStorageService,
-    private snackBarService: SnackbarService) { }
+    private snackBarService: SnackbarService,
+    private router: Router) { }
 
 
   ngOnInit(): void {
@@ -42,11 +47,40 @@ export class BuscadorInicioComponent implements OnInit {
 
   buscarPaciente(): void {
     this.localStorageService.clearPacienteSeleccionado();
+    this.definirCriterioBusqueda();
+    switch (this.criterio_busqueda_seleccionado) {
+      case criterios_busqueda.dni: this.ejecutarBusquedaPorDni(); break;
+      case criterios_busqueda.nombre: this.ejecutarBusquedaPorNombre(); break;
+    }
+  }
+
+  definirCriterioBusqueda(): void {
+    if (!Number(this.formSearcher.value)) {
+      this.criterio_busqueda_seleccionado = criterios_busqueda.nombre;
+    }
+  }
+
+  ejecutarBusquedaPorDni(): void {
+    this.pacienteService.findByDniPatient(this.formSearcher.value).subscribe((res) => {
+      this.pacienteService.dispararEventoPacientesEncontrados(res);
+      this.router.navigate(['/pacientes']);
+    },
+      (err) => {
+        err.status == 404 ?
+          this.snackBarService.openSnackBarError("No se han encotrado resultados.", "Cerrar") :
+          this.snackBarService.openSnackBarError("Ha habido un error en el servidor: " + err.error.message, "Cerrar");
+      });
+  }
+
+  ejecutarBusquedaPorNombre(): void {
     this.pacienteService.findByNamePatient(this.formSearcher.value).subscribe((res) => {
       this.pacienteService.dispararEventoPacientesEncontrados(res);
+      this.router.navigate(['/pacientes']);
     },
-    () => {
-      this.snackBarService.openSnackBarError("No se han encotrado resultados.", "Cerrar");
-    })
+      (err) => {
+        err.status == 404 ?
+          this.snackBarService.openSnackBarError("No se han encotrado resultados.", "Cerrar") :
+          this.snackBarService.openSnackBarError("Ha habido un error en el servidor: " + err.error.message, "Cerrar");
+      });
   }
 }
