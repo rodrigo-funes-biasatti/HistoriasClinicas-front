@@ -13,6 +13,7 @@ export class InfoPacienteSeleccionadoComponent implements OnInit {
 
   pacienteSeleccionado: any = null;
   labels: any = labels;
+  expanded: boolean = false;
 
   constructor(private pacientesService: PacientesService,
               private router: Router) { }
@@ -29,7 +30,11 @@ export class InfoPacienteSeleccionadoComponent implements OnInit {
   }
 
   redirectToFormularioPaciente(){
-    this.router.navigate(['/formulario-paciente']);
+    this.setValueExpanded(false);
+    this.router.navigate(['/formulario-paciente/editar']);
   }
 
+  setValueExpanded(value: boolean): void {
+    this.expanded = value;
+  }
 }

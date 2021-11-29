@@ -1,7 +1,7 @@
 <div class="container d-flex-justify-content-center mt-5">
   <mat-grid-list cols="3" rowHeight="12:1">
     <mat-grid-tile [colspan]="3" [rowspan]="1">
-      <h1>Paciente</h1>
+      <h1>{{titulo}}</h1>
     </mat-grid-tile>
     <div [formGroup]="formPaciente">
       <mat-grid-tile [colspan]="1" [rowspan]="2">
@@ -68,18 +68,6 @@
             Sólo
             <strong>números</strong>
           </mat-error>
-          <mat-error
-            *ngIf="formPaciente.controls['dni'].errors?.['minLength']"
-          >
-            Más de 
-            <strong>7 caracteres</strong>
-          </mat-error>
-          <mat-error
-            *ngIf="formPaciente.controls['dni'].errors?.['maxLength']"
-          >
-            Menos de 
-            <strong>8 caracteres</strong>
-          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2" [rowspan]="3">
@@ -94,6 +82,12 @@
             required
             formControlName="direccion"
           />
+          <mat-error
+            *ngIf="formPaciente.controls['direccion'].errors?.['required']"
+          >
+            La dirección es
+            <strong>requerida</strong>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="3">
@@ -105,6 +99,18 @@
             required
             formControlName="telefono"
           />
+          <mat-error
+            *ngIf="formPaciente.controls['telefono'].errors?.['required']"
+          >
+            El teléfono es
+            <strong>requerido</strong>
+          </mat-error>
+          <mat-error
+            *ngIf="formPaciente.controls['telefono'].errors?.['pattern']"
+          >
+            Sólo
+            <strong>números</strong>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="2">
@@ -116,12 +122,24 @@
             required
             formControlName="obra_social"
           />
+          <mat-error
+            *ngIf="formPaciente.controls['obra_social'].errors?.['required']"
+          >
+            La Obra Social es
+            <strong>requerido</strong>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="2">
         <mat-form-field appearance="fill" class="ancho-inputs">
           <mat-label>Fecha de Nacimiento</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento"   />
+          <mat-error
+            *ngIf="formPaciente.controls['fecha_nacimiento'].errors?.['required']"
+          >
+            La Fecha de Nacimiento es
+            <strong>requerida</strong>
+          </mat-error>
           <mat-datepicker-toggle
             matSuffix
             [for]="picker"
@@ -138,11 +156,17 @@
             <mat-option value="0">Masculino</mat-option>
             <mat-option value="1">Femenino</mat-option>
           </mat-select>
+          <mat-error
+            *ngIf="formPaciente.controls['sexo'].errors?.['required']"
+          >
+            El sexo es
+            <strong>requerido</strong>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
     </div>
     <mat-grid-tile [colspan]="3" [rowspan]="2">
-      <button mat-flat-button color="primary" class="espaciado-botones">
+      <button mat-flat-button color="primary" class="espaciado-botones" (click)="crearPaciente()">
         Guardar
       </button>
       <button

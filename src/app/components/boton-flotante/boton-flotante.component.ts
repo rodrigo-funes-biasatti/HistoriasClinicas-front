@@ -17,6 +17,7 @@ export class BotonFlotanteComponent implements OnInit {
       icon: 'person_add',
       color: 'warn',
       tooltip: labels.tooltip_agregar_paciente,
+      redirectTo: 'formulario-paciente/crear'
     },
     {
       icon: 'post_add',

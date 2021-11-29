@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Paciente } from '../models/paciente';
 import { environment } from 'src/environments/environment';
-import { EventEmitter } from '@angular/core';
+import { pacientes_api } from '../constants/endpoints';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -14,6 +14,7 @@ export class PacientesService {
   _pacientes: any[] = [];
   paciente: any = {};
   url: string = "pacientes/";
+  headers = new HttpHeaders().append("Access-Control-Allow-Origin", "*");
 
   public pacientesEncontrados$ = new BehaviorSubject<Paciente[]>(this._pacientes);
   public pacientesEncontrados = this.pacientesEncontrados$.asObservable();
@@ -24,21 +25,25 @@ export class PacientesService {
   constructor(private httpClient: HttpClient,
               private localStorageService: LocalStorageService) { }
 
-  findByNamePatient(nombre: string): Observable<Paciente[]>{
-    return this.httpClient.get<Paciente[]>(`${environment.endpoint}${this.url}nombre/${nombre}`);
-  };
-
-  findByDniPatient(dni: string): Observable<Paciente[]>{
-    return this.httpClient.get<Paciente[]>(`${environment.endpoint}${this.url}dni/${dni}`);
-  }
-
   dispararEventoPacientesEncontrados(pacientes: Paciente[]){
     this.pacientesEncontrados$.next(pacientes);
   };
 
   dispararEventoPacienteSeleccionado(paciente: Paciente){
+    this.localStorageService.clearPacienteSeleccionado();
     this.localStorageService.setPacienteSeleccionado(paciente);
     this.pacienteSeleccionado$.next(paciente);
   }
 
+  findByNamePatient(nombre: string): Observable<Paciente[]>{
+    return this.httpClient.get<Paciente[]>(`${environment.endpoint}${this.url}${pacientes_api.findByName}${nombre}`);
+  };
+
+  findByDniPatient(dni: string): Observable<Paciente[]>{
+    return this.httpClient.get<Paciente[]>(`${environment.endpoint}${this.url}${pacientes_api.findByDni}${dni}`);
+  }
+
+  createPaciente(paciente: Paciente){
+    return this.httpClient.post(`${environment.endpoint}${this.url}${pacientes_api.create}`, paciente);
+  }
 }

@@ -8,7 +8,7 @@ import { FormularioPacienteComponent } from './components/formulario-paciente/fo
 const routes: Routes = [
   { path: 'buscar', component: BuscadorInicioComponent },
   { path: 'pacientes', component: ListadoPacientesComponent },
-  { path: 'formulario-paciente', component: FormularioPacienteComponent },
+  { path: 'formulario-paciente/:modo', component: FormularioPacienteComponent },
   { path: '', redirectTo: 'buscar', pathMatch: 'full' },
   { path: '**', redirectTo: 'buscar' }
 ]

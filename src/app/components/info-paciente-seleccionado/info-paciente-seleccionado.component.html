@@ -2,7 +2,7 @@
   *ngIf="!objetoVacio(this.pacienteSeleccionado); else noPacienteSeleccionado"
 >
   <mat-accordion>
-    <mat-expansion-panel class="fondo-oscuro">
+    <mat-expansion-panel [expanded]="this.expanded" (opened)="setValueExpanded(true)" class="fondo-oscuro">
       <mat-expansion-panel-header>
         <mat-panel-title class="letras-blancas">
           <div class="d-flex flex-row margen-costados">

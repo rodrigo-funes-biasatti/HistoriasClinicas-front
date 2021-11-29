@@ -27,7 +27,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FormularioPacienteComponent } from './components/formulario-paciente/formulario-paciente.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -70,7 +70,7 @@ import { MatSelectModule } from '@angular/material/select';
     provide: HTTP_INTERCEPTORS,
     useClass: CustomInterceptor,
     multi: true
-  }],
+  }, { provide: MAT_DATE_LOCALE, useValue: 'es-AR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

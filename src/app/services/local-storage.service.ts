@@ -8,11 +8,14 @@ export class LocalStorageService {
   constructor() { }
 
   setPacienteSeleccionado(paciente: any): void {
-    localStorage.setItem("paciente_seleccionado", paciente);
+    let objectString = JSON.stringify(paciente);
+    localStorage.setItem("paciente_seleccionado", objectString);
   }
 
   get getPacienteSeleccionado(): any {
-    return localStorage.getItem("paciente_seleccionado"); 
+    let stringObject = localStorage.getItem("paciente_seleccionado")!;
+    let objectReturn = JSON.parse(stringObject)
+    return objectReturn; 
   }
 
   clearPacienteSeleccionado(): any {

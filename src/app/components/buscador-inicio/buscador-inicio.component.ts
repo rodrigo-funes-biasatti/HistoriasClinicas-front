@@ -43,6 +43,7 @@ export class BuscadorInicioComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.localStorageService.clearPacienteSeleccionado();
   }
 
   buscarPaciente(): void {
