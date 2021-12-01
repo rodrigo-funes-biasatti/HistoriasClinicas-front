@@ -46,4 +46,8 @@ export class PacientesService {
   createPaciente(paciente: Paciente){
     return this.httpClient.post(`${environment.endpoint}${this.url}${pacientes_api.create}`, paciente);
   }
+
+  updatePatient(paciente: Paciente){
+    return this.httpClient.put(`${environment.endpoint}${this.url}${pacientes_api.update}`, paciente);
+  }
 }

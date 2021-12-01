@@ -25,7 +25,7 @@ export class FormularioPacienteComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private pacienteService: PacientesService,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.inicializarFormulario();
@@ -72,7 +72,6 @@ export class FormularioPacienteComponent implements OnInit {
   }
 
   rellenarFormularioPacienteSeleccionado(): void {
-    console.log(new DatePipe("en-US").transform(this.paciente.fecha_nacimiento, "dd-MM-yyyy"));
     this.formPaciente?.controls['nombre'].setValue(this.paciente.nombre);
     this.formPaciente?.controls['apellido'].setValue(this.paciente.apellido);
     this.formPaciente?.controls['dni'].setValue(this.paciente.dni);
@@ -107,7 +106,7 @@ export class FormularioPacienteComponent implements OnInit {
         this.pacienteService.dispararEventoPacienteSeleccionado(pacienteGuardar);
       },
         (err) => {
-          console.log(err)
+          console.log(err.error.message)
           this.snackbarService.openSnackBarError('Hubo un error en el servidor: ' + err.message, "Cerrar");
         })
     }
@@ -116,5 +115,27 @@ export class FormularioPacienteComponent implements OnInit {
     }
   }
 
+  editarPaciente(): void {
+    if (this.formPaciente.valid) {
+      let pacienteGuardar: Paciente = this.rellenarPacienteFormulario();
+      pacienteGuardar.id = this.paciente.id;
+      this.pacienteService.updatePatient(pacienteGuardar).subscribe(() => {
+        this.snackbarService.openSnackBarSuccess("Se actualizó el paciente con éxito!", "Cerrar");
+        this.pacienteService.dispararEventoPacienteSeleccionado(pacienteGuardar);
+      },
+        (err) => {
+          this.snackbarService.openSnackBarError('Hubo un error en el servidor: ' + err.message, "Cerrar");
+        })
+    }
+    else{
+      this.formPaciente.markAllAsTouched();
+    }
+  }
 
+  guardarCambios(): void{
+    switch(this.modo_formulario){
+      case modos.modo_crear: this.crearPaciente(); break;
+      case modos.modo_editar: this.editarPaciente(); break;
+    }
+  }
 }

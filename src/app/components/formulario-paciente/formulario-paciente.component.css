@@ -2,11 +2,11 @@
     margin-top: calc(100vh / 4);
 }
 
+.espaciado-botones{
+    margin: 0 10px;
+}
+
 .ancho-inputs {
     width: 30vw;
     padding-left: 10px;
-}
-
-.espaciado-botones{
-    margin: 0 10px;
 }

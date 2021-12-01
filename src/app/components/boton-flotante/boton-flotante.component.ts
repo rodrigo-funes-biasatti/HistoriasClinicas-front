@@ -23,6 +23,7 @@ export class BotonFlotanteComponent implements OnInit {
       icon: 'post_add',
       color: 'warn',
       tooltip: labels.tootip_agregar_historia_clinica,
+      redirectTo: 'formulario-historias-clinicas'
     },
     {
       icon: 'search',

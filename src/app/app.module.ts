@@ -30,6 +30,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { FormularioHistoriasClinicasComponent } from './components/formulario-historias-clinicas/formulario-historias-clinicas.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatSelectModule } from '@angular/material/select';
     InfoPacienteSeleccionadoComponent,
     ListadoPacientesComponent,
     FormularioPacienteComponent,
+    FormularioHistoriasClinicasComponent,
   ],
   imports: [
     BrowserModule,

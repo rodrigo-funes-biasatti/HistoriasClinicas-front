@@ -43,11 +43,9 @@ export class BuscadorInicioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.localStorageService.clearPacienteSeleccionado();
   }
 
   buscarPaciente(): void {
-    this.localStorageService.clearPacienteSeleccionado();
     this.definirCriterioBusqueda();
     switch (this.criterio_busqueda_seleccionado) {
       case criterios_busqueda.dni: this.ejecutarBusquedaPorDni(); break;
