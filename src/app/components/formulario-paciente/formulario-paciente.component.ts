@@ -32,14 +32,24 @@ export class FormularioPacienteComponent implements OnInit {
     this.setearModoFormulario();
 
     if(this.modo_formulario === modos.modo_crear){
-      this.limpiar_campos();
-      this.titulo = 'Nuevo Paciente';
+      this.accionesModoCrear();
     }
     else{
       this.paciente = this.localStorageService.getPacienteSeleccionado;
-      this.rellenarFormularioPacienteSeleccionado();
-      this.titulo = 'Editar Paciente';
+      this.paciente ?  
+        this.accionesModoEditar() : 
+        this.accionesModoCrear();
     }
+  }
+
+  accionesModoCrear(): void {
+    this.limpiar_campos();
+    this.titulo = 'Nuevo Paciente';
+  }
+
+  accionesModoEditar(): void {
+    this.rellenarFormularioPacienteSeleccionado();
+    this.titulo = 'Editar Paciente';
   }
 
   inicializarFormulario(): void {

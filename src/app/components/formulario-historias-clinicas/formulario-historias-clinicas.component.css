@@ -1,8 +1,12 @@
 .ancho-inputs {
     width: 30vw;
-    padding-left: 10px;
+    /*padding-left: 10px;*/
 }
 
 .ancho-textarea{
-    width: 100vw;
+    width: 80vw;
+}
+
+.espaciado-botones{
+    margin: 0 10px;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Paciente } from '../models/paciente';
 import { environment } from 'src/environments/environment';
 import { pacientes_api } from '../constants/endpoints';
@@ -14,7 +14,6 @@ export class PacientesService {
   _pacientes: any[] = [];
   paciente: any = {};
   url: string = "pacientes/";
-  headers = new HttpHeaders().append("Access-Control-Allow-Origin", "*");
 
   public pacientesEncontrados$ = new BehaviorSubject<Paciente[]>(this._pacientes);
   public pacientesEncontrados = this.pacientesEncontrados$.asObservable();

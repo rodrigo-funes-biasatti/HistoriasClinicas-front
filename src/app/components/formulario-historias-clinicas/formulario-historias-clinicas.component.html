@@ -1,38 +1,63 @@
 <div class="container d-flex-justify-content-center mt-5">
-  <mat-grid-list cols="2" rowHeight="12:1">
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <h1>{{ titulo }}</h1>
-    </mat-grid-tile>
-    <div [formGroup]="formHistoriaClinica">
-      <mat-grid-tile [colspan]="1" [rowspan]="2">
-        <mat-form-field class="ancho-inputs" appearance="fill">
-          <mat-label>Nro Historia Clinica</mat-label>
-          <input
-            class="ancho-inputs"
-            matInput
-            placeholder="Nro Historia Clinica"
-            required
-            formControlName="nro_historia_clinica"
-          />
-        </mat-form-field>
+  <div *ngIf="this.paciente_seleccionado.id; else noPacienteSeleccionado">
+    <mat-grid-list cols="2" rowHeight="12:1">
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <h1>
+          <strong>{{ titulo }}</strong>
+        </h1>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="1" [rowspan]="2">
-        <mat-form-field appearance="fill" class="ancho-inputs">
-          <mat-label>Fecha</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fecha" />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="2" [rowspan]="2">
-        <mat-form-field appearance="fill" class="ancho-textarea">
+      <div [formGroup]="formHistoriaClinica">
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
+          <mat-form-field class="ancho-inputs" appearance="fill">
+            <mat-label>Nro Historia Clinica</mat-label>
+            <input
+              class="ancho-inputs"
+              matInput
+              placeholder="Nro Historia Clinica"
+              required
+              formControlName="nro_historia_clinica"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
+          <mat-form-field appearance="fill" class="ancho-inputs">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fecha" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+          <mat-form-field appearance="fill" class="ancho-textarea">
             <mat-label>Motivo de la consulta</mat-label>
             <textarea matInput placeholder="Motivo/s"></textarea>
-        </mat-form-field>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+          <mat-form-field appearance="fill" class="ancho-textarea">
+            <mat-label>Observaciones</mat-label>
+            <textarea matInput placeholder="Observaciones"></textarea>
+          </mat-form-field>
+        </mat-grid-tile>
+      </div>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <button mat-flat-button color="primary" class="espaciado-botones">
+          Guardar
+        </button>
+        <button mat-stroked-button color="warn" class="espaciado-botones">
+          Limpiar
+        </button>
       </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <ng-template #noPacienteSeleccionado>
+    <div class="d-flex justify-content-center">
+      <h1>
+        <strong>No hay resultados, por favor realice una búsqueda.</strong>
+      </h1>
     </div>
-  </mat-grid-list>
+  </ng-template>
 </div>

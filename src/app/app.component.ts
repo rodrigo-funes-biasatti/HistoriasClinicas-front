@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.localStorageService.clearPacienteSeleccionado();
   }
   
 }
