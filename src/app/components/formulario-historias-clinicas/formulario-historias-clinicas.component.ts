@@ -32,15 +32,15 @@ export class FormularioHistoriasClinicasComponent implements OnInit {
     });
 
     this.inicializarFormulario();
-    this.formHistoriaClinica.controls['fecha'].setValue(Date.now());
+    this.formHistoriaClinica.controls['fecha'].setValue(Date.now().toString());
   }
 
   inicializarFormulario(): void {
     this.formHistoriaClinica = this.fb.group({
-      nro_historia_clinica: ['', [Validators.required]],
+      nro_historia_clinica: ['', [Validators.required,  Validators.pattern("^[0-9]*$")]],
       fecha: ['', [Validators.required]],
-      motivo_consulta: ['', [Validators.required]],
-      indicaciones: ['', [Validators.required]]
+      motivo_consulta: ['', [Validators.required, Validators.maxLength(1000)]],
+      indicaciones: ['', [Validators.required, Validators.maxLength(1000)]]
     });
   }
 

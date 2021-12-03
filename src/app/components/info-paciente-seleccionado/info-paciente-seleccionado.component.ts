@@ -29,12 +29,17 @@ export class InfoPacienteSeleccionadoComponent implements OnInit {
     return Object.keys(obj).length == 0;
   }
 
-  redirectToFormularioPaciente(){
+  redirectToFormularioPaciente(): void{
     this.setValueExpanded(false);
     this.router.navigate(['/formulario-paciente/editar']);
   }
 
   setValueExpanded(value: boolean): void {
     this.expanded = value;
+  }
+
+  redirectToListadoHistorias(): void {
+    this.setValueExpanded(false);
+    this.router.navigate(['/listado-historias-clinicas']);
   }
 }

@@ -9,7 +9,7 @@
       <div [formGroup]="formHistoriaClinica">
         <mat-grid-tile [colspan]="1" [rowspan]="2">
           <mat-form-field class="ancho-inputs" appearance="fill">
-            <mat-label>Nro Historia Clinica</mat-label>
+            <mat-label>Nro Historia Clinica (Sugerido)</mat-label>
             <input
               class="ancho-inputs"
               matInput
@@ -22,7 +22,7 @@
         <mat-grid-tile [colspan]="1" [rowspan]="2">
           <mat-form-field appearance="fill" class="ancho-inputs">
             <mat-label>Fecha</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="fecha" />
+            <input matInput [matDatepicker]="picker" formControlName="fecha" required/>
             <mat-datepicker-toggle
               matSuffix
               [for]="picker"
