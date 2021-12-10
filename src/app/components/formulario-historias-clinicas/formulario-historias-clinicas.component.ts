@@ -66,8 +66,6 @@ export class FormularioHistoriasClinicasComponent implements OnInit {
       this.nro_historia = nextNro[0].new_id;
       this.setNextNroHistoria(this.nro_historia);
     });
-
-    this.formHistoriaClinica.controls['fecha'].setValue(Date.now().toString());
   }
 
   accionesModoEditar(): void{

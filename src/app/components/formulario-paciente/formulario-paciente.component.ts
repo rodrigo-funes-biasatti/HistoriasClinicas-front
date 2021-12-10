@@ -16,7 +16,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 export class FormularioPacienteComponent implements OnInit {
 
   formPaciente!: FormGroup;
-  today: string | null = new DatePipe("en-US").transform(new Date(), "dd-MM-yyyy");
+  today: string | null = new DatePipe("en-ES").transform(new Date(), "dd-MM-yyyy");
   titulo: string = '';
   paciente!: Paciente;
   modo_formulario: string = modos.modo_crear;
@@ -116,8 +116,7 @@ export class FormularioPacienteComponent implements OnInit {
         this.pacienteService.dispararEventoPacienteSeleccionado(pacienteGuardar);
       },
         (err) => {
-          console.log(err.error.message)
-          this.snackbarService.openSnackBarError('Hubo un error en el servidor: ' + err.message, "Cerrar");
+          this.snackbarService.openSnackBarError('Hubo un error en el servidor: ' + err.error.message, "Cerrar");
         })
     }
     else{

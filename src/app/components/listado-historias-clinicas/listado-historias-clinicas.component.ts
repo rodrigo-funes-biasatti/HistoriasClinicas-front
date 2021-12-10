@@ -32,7 +32,6 @@ export class ListadoHistoriasClinicasComponent implements OnInit {
 
   obtenerHistoriasClinicas(): void {
     this.historiaClinicaService.getHistoriasByIdPaciente(this.paciente.id.toString()).subscribe(res => {
-      res.map(h => h.fecha = new Date(h.fecha).toLocaleDateString());
       this.historias = res;
     })
   }
@@ -47,4 +46,7 @@ export class ListadoHistoriasClinicasComponent implements OnInit {
     this.router.navigate(['/formulario-historias-clinicas', 'editar']);
   }
 
+  mostrarFechaFormateada(fecha: string){
+    return new Date(fecha).toLocaleDateString();
+  }
 }

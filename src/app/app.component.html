@@ -1,18 +1,23 @@
-<app-inicio></app-inicio>
+<div
+  [ngClass]="this.spinnerService.visibility.value ? 'spinner_overlay' : ''"
+>
+  <app-inicio></app-inicio>
 
-<app-info-paciente-seleccionado></app-info-paciente-seleccionado>
+  <app-info-paciente-seleccionado></app-info-paciente-seleccionado>
 
-<mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 
-<div [ngClass]="this.spinnerService.visibility ? 'loading-indicator' : ''">
-  <mat-spinner
-    [mode]="mode"
-    [value]="value"
-    *ngIf="this.spinnerService.visibility | async"
-  ></mat-spinner>
+  <div
+    [ngClass]="this.spinnerService.visibility.value ? 'loading-indicator' : ''"
+  >
+    <mat-spinner
+      [mode]="mode"
+      [value]="value"
+      *ngIf="this.spinnerService.visibility | async"
+    ></mat-spinner>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <app-boton-flotante></app-boton-flotante>
 </div>
-
-<router-outlet></router-outlet>
-
-<app-boton-flotante></app-boton-flotante>
-
