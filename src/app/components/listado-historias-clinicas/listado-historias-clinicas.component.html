@@ -1,28 +1,55 @@
-<div class="container d-flex justify-content-center mt-5 mb-3">
-    <div class="row d-flex justify-content-center">
+<div *ngIf="this.paciente; else noPacienteSeleccionado">
+  <div *ngIf="this.historias.length; else noHistoriasClinicas">
+    <div class="container d-flex justify-content-center mt-5 mb-3">
+      <div class="row">
         <div class="col">
           <h1><strong>Historias Clinicas del Paciente</strong></h1>
         </div>
       </div>
-</div>
-<div class="container">
-  <div class="row mb-2 mt-2">
-    <div class="col">
-      <mat-card>
-        <mat-card-title>
-          Fecha:
-          <strong>01/02/2021</strong>
-        </mat-card-title>
-        <mat-card-subtitle>
-          Nro Historia Clinica:
-          <strong>1244</strong>
-        </mat-card-subtitle>
-        <mat-card-actions align="end">
-          <button mat-button>VER</button>
-          <button mat-button>EDITAR</button>
-        </mat-card-actions>
-      </mat-card>
+    </div>
+    <div class="container espaciado-ultimo-elemento">
+      <div class="row mb-2 mt-2" *ngFor="let historia of this.historias">
+        <div class="col">
+          <mat-card>
+            <mat-card-title>
+              Fecha:
+              <strong>{{ historia.fecha }}</strong>
+            </mat-card-title>
+            <mat-card-subtitle>
+              Nro Historia Clinica:
+              <strong>{{ historia.nro_historia }}</strong>
+            </mat-card-subtitle>
+            <mat-card-actions align="end">
+              <button
+                mat-button
+                (click)="this.redirictVerHistoria(historia.nro_historia)"
+              >
+                VER
+              </button>
+              <button
+                mat-button
+                (click)="this.redirectEditarHistoria(historia)"
+              >
+                EDITAR
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
     </div>
   </div>
-  
+  <ng-template #noHistoriasClinicas>
+    <div class="d-flex justify-content-center mt-5">
+      <h1>
+        <strong>{{ this.mensaje_no_historias }}</strong>
+      </h1>
+    </div>
+  </ng-template>
 </div>
+<ng-template #noPacienteSeleccionado>
+  <div class="d-flex justify-content-center mt-5">
+    <h1>
+      <strong>No hay resultados, por favor realice una búsqueda.</strong>
+    </h1>
+  </div>
+</ng-template>

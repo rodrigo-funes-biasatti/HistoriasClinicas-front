@@ -27,10 +27,18 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FormularioPacienteComponent } from './components/formulario-paciente/formulario-paciente.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { FormularioHistoriasClinicasComponent } from './components/formulario-historias-clinicas/formulario-historias-clinicas.component';
+import { ListadoHistoriasClinicasComponent } from './components/listado-historias-clinicas/listado-historias-clinicas.component';
+import { VisualizarHistoriaClinicaComponent } from './components/visualizar-historia-clinica/visualizar-historia-clinica.component';
+import { DatePipe } from '@angular/common';
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -42,6 +50,8 @@ import { FormularioHistoriasClinicasComponent } from './components/formulario-hi
     ListadoPacientesComponent,
     FormularioPacienteComponent,
     FormularioHistoriasClinicasComponent,
+    ListadoHistoriasClinicasComponent,
+    VisualizarHistoriaClinicaComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,13 +76,22 @@ import { FormularioHistoriasClinicasComponent } from './components/formulario-hi
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: CustomInterceptor,
     multi: true
-  }, { provide: MAT_DATE_LOCALE, useValue: 'es-AR' }],
+  }, 
+  { provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
+  DatePipe,
+  {
+    provide: DateAdapter,
+    useClass: MomentDateAdapter,
+    deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+  },
+  {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS}
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

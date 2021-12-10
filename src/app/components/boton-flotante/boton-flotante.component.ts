@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { speedDialFabAnimations } from './speed-dial-fab.animations';
 import { labels } from '../../constants/labels';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boton-flotante',
@@ -23,7 +24,7 @@ export class BotonFlotanteComponent implements OnInit {
       icon: 'post_add',
       color: 'warn',
       tooltip: labels.tootip_agregar_historia_clinica,
-      redirectTo: 'formulario-historias-clinicas'
+      redirectTo: 'formulario-historias-clinicas/crear'
     },
     {
       icon: 'search',
@@ -33,7 +34,7 @@ export class BotonFlotanteComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -52,4 +53,9 @@ export class BotonFlotanteComponent implements OnInit {
     this.buttons.length ? this.hideItems() : this.showItems();
   }
 
+  redirectTo(url: string): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([url]);
+  } 
 }

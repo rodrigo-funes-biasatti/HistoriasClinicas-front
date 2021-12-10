@@ -133,7 +133,7 @@
       <mat-grid-tile [colspan]="1" [rowspan]="2">
         <mat-form-field appearance="fill" class="ancho-inputs">
           <mat-label>Fecha de Nacimiento</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento"   />
+          <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento" required/>
           <mat-error
             *ngIf="formPaciente.controls['fecha_nacimiento'].errors?.['required']"
           >

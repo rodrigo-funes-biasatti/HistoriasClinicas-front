@@ -1,5 +1,5 @@
 <div class="container d-flex-justify-content-center mt-5">
-  <div *ngIf="this.paciente_seleccionado.id; else noPacienteSeleccionado">
+  <div *ngIf="this.paciente_seleccionado; else noPacienteSeleccionado">
     <mat-grid-list cols="2" rowHeight="12:1">
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <h1>
@@ -9,7 +9,7 @@
       <div [formGroup]="formHistoriaClinica">
         <mat-grid-tile [colspan]="1" [rowspan]="2">
           <mat-form-field class="ancho-inputs" appearance="fill">
-            <mat-label>Nro Historia Clinica (Sugerido)</mat-label>
+            <mat-label>{{this.setMatLabelNroHistoria()}}</mat-label>
             <input
               class="ancho-inputs"
               matInput
@@ -33,21 +33,21 @@
         <mat-grid-tile [colspan]="2" [rowspan]="2">
           <mat-form-field appearance="fill" class="ancho-textarea">
             <mat-label>Motivo de la consulta</mat-label>
-            <textarea matInput placeholder="Motivo/s"></textarea>
+            <textarea matInput placeholder="Motivo/s" formControlName="motivo_consulta"></textarea>
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2" [rowspan]="2">
           <mat-form-field appearance="fill" class="ancho-textarea">
             <mat-label>Observaciones</mat-label>
-            <textarea matInput placeholder="Observaciones"></textarea>
+            <textarea matInput placeholder="Observaciones" formControlName="indicaciones"></textarea>
           </mat-form-field>
         </mat-grid-tile>
       </div>
       <mat-grid-tile [colspan]="2" [rowspan]="1">
-        <button mat-flat-button color="primary" class="espaciado-botones">
+        <button mat-flat-button color="primary" class="espaciado-botones" (click)="this.guardarCambios()">
           Guardar
         </button>
-        <button mat-stroked-button color="warn" class="espaciado-botones">
+        <button mat-stroked-button color="warn" class="espaciado-botones" (click)="this.limpiarCampos()">
           Limpiar
         </button>
       </mat-grid-tile>
@@ -56,7 +56,7 @@
   <ng-template #noPacienteSeleccionado>
     <div class="d-flex justify-content-center">
       <h1>
-        <strong>No hay resultados, por favor realice una búsqueda.</strong>
+        <strong>No hay Paciente seleccioado, por favor realice una búsqueda.</strong>
       </h1>
     </div>
   </ng-template>

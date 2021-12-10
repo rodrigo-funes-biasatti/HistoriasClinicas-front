@@ -1,0 +1,34 @@
+<div *ngIf="this.historia && this.paciente; else noHistoriaClinica">
+    <div class="d-flex justify-content-center mt-5">
+        <h1><strong>Resumen de Historia Clínica</strong></h1>
+    </div>
+  <div class="container d-flex justify-content-start mt-5 mb-3">
+    <div class="row">
+      <div class="col-12">
+        <p class="letra-grande">Nombre Completo: <strong>{{this.paciente.nombre + ' ' + this.paciente.apellido}}</strong></p>
+      </div>
+      <div class="col-12">
+          <p class="letra-grande">Edad: <strong>{{this.calcularEdad(this.paciente.fecha_nacimiento)}}</strong></p>
+      </div>
+      <div class="col-12">
+        <p class="letra-grande">Nro de Historia Clínica: <strong>{{this.historia.nro_historia}}</strong></p>
+      </div>
+      <div class="col-12">
+          <p class="letra-grande">Fecha de registro: <strong>{{this.historia.fecha}}</strong></p>
+      </div>
+      <div class="col-12">
+          <p class="letra-grande">Motivo de la consulta: <strong>{{this.historia.motivo_consulta}}</strong></p>
+      </div>
+      <div class="col-12">
+          <p class="letra-grande">Indicaciones: <strong>{{this.historia.indicaciones}}</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noHistoriaClinica>
+  <div class="d-flex justify-content-center mt-5">
+    <h1>
+      <strong>No hay resultados, por favor realice una búsqueda.</strong>
+    </h1>
+  </div>
+</ng-template>

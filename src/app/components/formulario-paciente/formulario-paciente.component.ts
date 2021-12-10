@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { modos } from 'src/app/constants/modos-form-pacientes';
+import { modos } from 'src/app/constants/modos-formulario';
 import { Paciente } from 'src/app/models/paciente';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { PacientesService } from 'src/app/services/pacientes.service';

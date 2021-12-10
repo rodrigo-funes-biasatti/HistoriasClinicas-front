@@ -7,4 +7,8 @@ export const pacientes_api = {
 
 export const historias_clinicas_api = {
     getNextNroHistoria: 'next_id',
+    getByIdPaciente: 'buscar/',
+    getByNroHistoria: 'buscar-nro/',
+    create: 'guardar',
+    update: 'editar'
 }

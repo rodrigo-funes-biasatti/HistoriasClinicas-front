@@ -8,4 +8,5 @@ export const labels = {
 
     no_paciente_selec: 'No hay un paciente seleccionado.',
     paciente_seleccionado: 'Se ha seleccionado un paciente.',
+    no_historias_clinicas_encontradas: 'No hay Historias Clínicas para este Paciente.'
 }
